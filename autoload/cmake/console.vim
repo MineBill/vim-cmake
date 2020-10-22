@@ -113,13 +113,16 @@ function! s:CMakeConsoleCb(data) abort
                 let s:previous_window = winnr()
             endif
             execute bufwinnr(s:console_buffer) . 'wincmd w'
-        elseif g:cmake_jump_on_error
-            if match(a:data, '\m\CErrors have occurred') >= 0
+        elseif match(a:data, '\m\CErrors have occurred') >= 0
+            if g:cmake_jump_on_error
                 if winnr() != bufwinnr(s:console_buffer)
                     let s:previous_window = winnr()
                 endif
                 execute bufwinnr(s:console_buffer) . 'wincmd w'
             endif
+            doautocmd User CMakeCommandFailed
+        else
+            doautocmd User CMakeCommandOk
         endif
     endif
 endfunction

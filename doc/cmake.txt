@@ -272,6 +272,14 @@ g:cmake_root_markers (default: `['.git', '.svn']`)
 			project root.  When Vim-CMake is loaded, it looks for
 			the project root starting from the CWD.
 
+There are two auto-commands to make configuration a bit easier.
+
+CMakeCommandFailed
+			Triggered when the CMake command failed.
+
+CMakeCommandOk
+			Triggered when the CMake command succeeded.
+
 ==============================================================================
 CONTRIBUTING						*cmake-contributing*
 
